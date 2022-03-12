@@ -1,0 +1,11 @@
+sudo: required
+language: generic
+
+services:
+  - docker
+
+before_install:
+  - docker build -t  nicoWeb31/test-docker-ic-aws -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true  nicoWeb31/test-docker-ic-aws npm run test
